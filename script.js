@@ -69,10 +69,10 @@ function calculateResult() {
     right = '';
     updateResult();
 }
+
 function CalculateCubeRoot() {
     if (left.length === 0) return;
 
-    // If there is a pending operation, solve it first
     if (operator && right) {
         calculateResult();
     }
@@ -80,7 +80,6 @@ function CalculateCubeRoot() {
     let value = parseFloat(left);
     if (isNaN(value)) return;
 
-    // Cube root (supports negative numbers)
     let result = Math.cbrt(value);
 
     left = result.toFixed(6).toString();
