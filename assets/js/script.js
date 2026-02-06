@@ -306,7 +306,8 @@ function differentiateExpression() {
       throw new Error("Unexpected token near the end of the expression.");
     }
     const derivative = simplify(differentiate(ast));
-    output.innerText = toString(derivative);
+    // output.innerText = toString(derivative);
+
     currentExpression = toString(derivative);
     updateResult();
   } catch (error) {
@@ -830,19 +831,6 @@ function getPrecedence(node) {
   return 5;
 }
 
-  if (num % 2 === 0) {
-    return false;
-  }
-
-  const limit = Math.sqrt(num);
-  for (let i = 3; i <= limit; i += 2) {
-    if (num % i === 0) {
-      return false; 
-    }
-  }
-
-  return true;
-}
 
 function checkPrime() {
     const num = parseFloat(currentExpression);
