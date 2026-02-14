@@ -1648,7 +1648,8 @@ function clearPhysicsCalculator() {
 
 // ============================================
 // END OF PHYSICS CALCULATOR FUNCTIONALITY
-// ============================================function openGeometry() {
+// ============================================
+function openGeometry() {
   document.getElementById("geometryModal").style.display = "flex";
 }
 
