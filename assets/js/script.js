@@ -2053,3 +2053,66 @@ function cubeRootResult() {
   right = "";
   updateResult();
 }
+
+// ============================================
+// PERCENTAGE CHANGE CALCULATOR FUNCTIONS
+// ============================================
+
+function calculatePercentageChange() {
+    // Get input values
+    const original = parseFloat(document.getElementById('pc-original').value);
+    const newValue = parseFloat(document.getElementById('pc-new').value);
+    
+    // Validation
+    if (isNaN(original) || isNaN(newValue)) {
+        alert('Please enter valid numbers');
+        return;
+    }
+    
+    if (original === 0) {
+        alert('Original value cannot be zero');
+        return;
+    }
+    
+    // Calculate percentage change
+    const absoluteChange = newValue - original;
+    const percentageChange = (absoluteChange / Math.abs(original)) * 100;
+    
+    // Determine description
+    let description = '';
+    if (percentageChange > 0) {
+        description = `an increase of ${Math.abs(percentageChange).toFixed(2)}%`;
+    } else if (percentageChange < 0) {
+        description = `a decrease of ${Math.abs(percentageChange).toFixed(2)}%`;
+    } else {
+        description = 'no change';
+    }
+    
+    // Display results
+    const resultDiv = document.getElementById('pc-result');
+    document.getElementById('pc-change-value').textContent = percentageChange.toFixed(2);
+    document.getElementById('pc-absolute-change').textContent = absoluteChange.toFixed(2);
+    document.getElementById('pc-description').textContent = `From ${original} to ${newValue} is ${description}`;
+    resultDiv.style.display = 'block';
+    
+    // Update main calculator display with the result
+    left = percentageChange.toFixed(2).toString();
+    operator = '';
+    right = '';
+    updateResult();
+}
+
+function clearPercentageChange() {
+    // Clear input fields
+    document.getElementById('pc-original').value = '100';
+    document.getElementById('pc-new').value = '150';
+    
+    // Hide result
+    document.getElementById('pc-result').style.display = 'none';
+    
+    // Clear calculator display
+    left = '';
+    operator = '';
+    right = '';
+    updateResult();
+}
